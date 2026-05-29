@@ -1,2 +1,2 @@
-#Github pro Minecraft projekty#
+# Github pro Minecraft projekty
 ## Perex
