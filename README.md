@@ -14,4 +14,4 @@ Gitcraft tak zásadně zjednodušuje, zrychluje a zpřístupňuje týmovou spolu
 
 Prohlédněte si detailní technickou dokumentaci a specifikaci systému:
 
-* **[Katalog požadavků softwarového projektu (FR & NFR)](./requirments.md)** – *Všechny funkční a nefunkční požadavky jsou zaznamenány zde.*
+* **[Katalog požadavků softwarového projektu (FR & NFR)](./requirements.md)** – *Všechny funkční a nefunkční požadavky jsou zaznamenány zde.*
