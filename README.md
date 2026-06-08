@@ -6,5 +6,6 @@
 ### Hlavní pilíře platformy:
 * **Hybridní přístup:** Funguje jako webová i desktopová aplikace, což umožňuje **kompletní offline práci** s automatickou synchronizací po připojení k síti.
 * **Testovací okno:** Hlavní inovací je integrované prostředí, které dokáže během pár vteřin nasimulovat změny v **odlehčeném Minecraft světě** bez nutnosti zdlouhavě spouštět celou hru.
+* **Jednoduchý hosting a správa serverů:** Gitcraft mimo spousty funkcí na spolupráci na projektech nabízí i zdarma hosting serverů se zjednodušeným přístupem a správou.
 
 Gitcraft tak zásadně zjednodušuje, zrychluje a zpřístupňuje týmovou spolupráci na pluginech, módech i stavbách.
