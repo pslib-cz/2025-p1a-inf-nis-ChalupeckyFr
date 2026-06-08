@@ -9,3 +9,9 @@
 * **Jednoduchý hosting a správa serverů:** Gitcraft mimo spousty funkcí na spolupráci na projektech nabízí i zdarma hosting serverů se zjednodušeným přístupem a správou.
 
 Gitcraft tak zásadně zjednodušuje, zrychluje a zpřístupňuje týmovou spolupráci na pluginech, módech i stavbách.
+
+## Dokumentace projektu
+
+Prohlédněte si detailní technickou dokumentaci a specifikaci systému:
+
+* **[Katalog požadavků softwarového projektu (FR & NFR)](./requirments.md)** – *Všechny funkční a nefunkční požadavky jsou zaznamenány zde.*
