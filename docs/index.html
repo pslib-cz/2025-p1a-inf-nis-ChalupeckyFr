@@ -3,54 +3,346 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gitcraft | Dokumentace projektu</title>
+    <title>Gitcraft Project Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
     <header>
-        <div class="container">
+        <div class="container header-flex">
             <div class="logo">
-                <img src="assets/logo.svg" alt="Gitcraft Logo">
+                <i class="fas fa-cubes" style="font-size: 32px; color: var(--accent);"></i>
                 <span>Gitcraft</span>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#vision">Vize</a></li>
-                    <li><a href="#requirements">Požadavky</a></li>
-                    <li><a href="#diagrams">Diagramy</a></li>
+                    <li><a href="#hero">Domů</a></li>
+                    <li><a href="#release-notes">Release Notes</a></li>
+                    <li><a href="#komunita">r/Gitcraft</a></li>
+                    <li><a href="#sources">Zdroje</a></li>
                 </ul>
             </nav>
-            <div class="cta">
-                <a href="#" class="btn-primary">GitHub</a>
+            <div class="header-actions">
+                <button class="theme-btn" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="#" class="btn-primary"><i class="fas fa-download"></i> Stáhnout</a>
             </div>
         </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1>Dokumentace systému <span>Gitcraft</span></h1>
-                <p>Vizuální správa verzí pro Minecraft tvůrce.</p>
-            </div>
-        </section>
+    <main class="container main-layout">
         
-        <section id="content">
-            <div class="container">
+        <aside class="sidebar-left">
+            <div class="sticky-ad-wrapper">
+                <div class="novinky-ad-label">DOPORUČUJEME</div>
+                <div class="novinky-ad-box">
+                    <h3>Nová éra Minecraft verzování je tady!</h3>
+                    <p>Zapomeň na nepřehledné složky. Gitcraft mění pravidla hry pro všechny stavitele a vývojáře.</p>
+                    <div class="novinky-ad-image-mock">
+                        <i class="fas fa-code-branch"></i>
+                        <span>BLOCK-DIFF ENGINE v1.2</span>
+                    </div>
+                    <a href="#release-notes" class="novinky-ad-btn">Číst detaily</a>
                 </div>
-        </section>
-    </main>
+            </div>
+        </aside>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Gitcraft Project | Vytvořeno pro školní účely</p>
-            <div class="socials">
+        <div class="content-stream">
+            
+            <section id="hero" class="hero-section">
+                <h1>Vítejte na <span>Gitcraftu</span></h1>
+                <div class="disclaimer">
+                    <i class="fas fa-exclamation-triangle"></i> Tento web je simulací komunitního portálu vyvíjenou v rámci školního projektu.
                 </div>
+                <div class="welcome-text">
+                    <p>Sledujte nejnovější úpravy v herním enginu, sdílejte své blueprinty a inspirujte se výtvory ostatních hráčů z naší komunity.</p>
+                </div>
+            </section>
+
+            <section class="slideshow-section">
+                <div class="slideshow-container">
+                    <div class="mySlides fade">
+                        <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1000&auto=format&fit=crop" alt="Hrad">
+                        <div class="slide-caption">Masivní survival projekty synchronizované v reálném čase</div>
+                    </div>
+                    <div class="mySlides fade">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1000&auto=format&fit=crop" alt="Redstone">
+                        <div class="slide-caption">Chytrá detekce Redstone šumu šetří vaše úložiště</div>
+                    </div>
+                    <div class="mySlides fade">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1000&auto=format&fit=crop" alt="Shaders">
+                        <div class="slide-caption">Nádherné grafické resource packy s podporou PBR odlesků</div>
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+            </section>
+
+            <section id="release-notes" style="margin-top: 50px; scroll-margin-top: 100px;">
+                <h2 style="font-size: 28px; margin-bottom: 10px;"><i class="fas fa-clipboard-list" style="color: #10b981;"></i> Release Notes</h2>
+                <p style="color: var(--text-dim); margin-bottom: 20px;">Sledujte nejnovější úpravy a vylepšení v našem systému.</p>
+                
+                <div class="release-card info-card">
+                    <h3 style="font-size: 20px;">Verze 1.2.0 – "The Smart Diff Update"</h3>
+                    <p style="margin-top: 10px;"><strong>Novinky a vylepšení:</strong></p>
+                    <ul style="padding-left: 20px; margin-bottom: 15px;">
+                        <li><strong>Optimalizace Block-Diff enginu:</strong> Snížení RAM nároků při parsování obřích `.mca` souborů o <strong>42 %</strong>.</li>
+                        <li><strong>Plná integrace s Gitcraft Dashboardem:</strong> Webové rozhraní nyní živě synchronizuje 3D náhledy změn hned po pushnutí commitu.</li>
+                        <li><strong>Chytrá detekce "Redstone šumu":</strong> Opakující se blikání redstonových obvodů už nespamuje historii zbytečnými commity, pokud nedojde ke strukturální změně bloků.</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>Opravy chyb:</strong></p>
+                    <ul style="padding-left: 20px;">
+                        <li>Opraven pád parseru při zpracování specifických entit z Minecraft verze 1.21+.</li>
+                        <li>Vyřešeno zasekávání asynchronního zapisovače při bleskovém odpojení hráče během ukládání chunků.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="komunita" style="margin-top: 50px; scroll-margin-top: 100px;">
+                <h2 style="font-size: 28px; margin-bottom: 10px;"><i class="fab fa-reddit" style="color: #ff4500;"></i> r/Gitcraft Komunita</h2>
+                <p style="color: var(--text-dim); margin-bottom: 20px;">Sdílej své blueprinty, raď se o modech a hodnoť práci ostatních.</p>
+
+                <div class="reddit-filters">
+                    <button class="filter-btn active" onclick="filterPosts('all')">Všechno</button>
+                    <button class="filter-btn" onclick="filterPosts('build')">Stavění & Blueprinty</button>
+                    <button class="filter-btn" onclick="filterPosts('tech')">Módy & Redstone</button>
+                    <button class="filter-btn" onclick="filterPosts('gfx')">Textury & Shadery</button>
+                </div>
+
+                <div id="reddit-feed-container"></div>
+            </section>
+
+            <section id="sources" class="sources-section" style="margin-top: 50px; scroll-margin-top: 100px;"> 
+                <h2>Zdroje informací a médií</h2> 
+                <div class="sources-card"> 
+                    <p>V rámci splnění akademických standardů a citační etiky níže uvádíme zdroje použitého obsahu:</p> 
+                    <ul> 
+                        <li><strong>Ilustrační fotografie:</strong> Staženy z platformy <a href="https://unsplash.com" target="_blank">Unsplash</a> v souladu s bezplatnou licencí pro nekomerční a vzdělávací účely.</li> 
+                        <li><strong>Inspirace uživatelského rozhraní:</strong> Struktura rozvržení průvodce šablonami čerpá z designových schémat společnosti <a href="https://canva.com" target="_blank">Canva</a> a <strong>Reddit</strong>.</li> 
+                        <li><strong>Koncepty reklamního a textového obsahu:</strong> Inspirováno rozvržením portálů <a href="https://www.alza.cz" target="_blank">Alza.cz</a>, <a href="https://www.novinky.cz" target="_blank">Novinky.cz</a>.</li> 
+                    </ul> 
+                </div> 
+            </section> 
+
+        </div> 
+
+        <aside class="sidebar-right"> 
+            <div class="sticky-ad-wrapper"> 
+                <div class="alza-title-container"> 
+                    <span class="alza-logo-mock">gitcraft <span>%</span> dny</span> 
+                </div> 
+                 
+                <div class="alza-main-banner"> 
+                    <div class="alza-green-mascot"> 
+                        <i class="fas fa-robot"></i> 
+                    </div> 
+                    <div class="alza-badge-sale">Slevy až 30 %</div> 
+                    <h4>Gitcraft Premium Pass</h4> 
+                    <p class="alza-pitch">Chceš neomezený cloud, bleskový Block-Diff a animované odznáčky v žebříčku?</p> 
+                     
+                    <div class="alza-price-tag"> 
+                        <span class="old-price">349 Kč</span> 
+                        <span class="new-price">244 Kč<span class="month">/měs</span></span> 
+                    </div> 
+
+                    <a href="#" class="alza-btn-buy">Kup teď</a> 
+                </div> 
+
+                <div class="alza-mini-banner"> 
+                    <span class="tag-orange">TOP BENEFIT</span> 
+                    <h5>Garantované TPS 20.0</h5> 
+                    <p>S premium hostingem servery nikdy nelagují.</p> 
+                </div> 
+            </div> 
+        </aside> 
+
+    </main> 
+
+    <footer> 
+        <div class="container footer-content"> 
+            <div class="footer-info"> 
+                <h4>Gitcraft Project Hub</h4> 
+                <p>Inovativní dokumentace softwarové architektury vyvíjená v rámci školních osnov IT semináře.</p> 
+            </div> 
+            <div class="footer-credits"> 
+                <p>&copy; 2026 Gitcraft | Všechna práva simulována</p> 
+                <p>Vytvořil student: <strong>František Chalupecký</strong></p> 
+            </div> 
+        </div> 
+    </footer> 
+
+    <div id="post-modal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-box">
+            <i class="fas fa-times modal-close" onclick="document.getElementById('post-modal').style.display='none'"></i>
+            <img id="modal-img" class="modal-header-img" src="" alt="Post Image">
+            <div class="modal-body">
+                <div id="modal-meta" class="post-meta"></div>
+                <h2 id="modal-title" class="post-title" style="font-size: 26px;"></h2>
+                <div id="modal-text" class="modal-text"></div>
+                
+                <div class="comments-section">
+                    <h3 style="margin-bottom: 15px;"><i class="fas fa-comments"></i> Komentáře</h3>
+                    <div id="modal-comments"></div>
+                </div>
+            </div>
         </div>
-    </footer>
+    </div>
 
-</body>
+    <script> 
+        // ==========================================
+        // DATA PRO REDDIT FEED (15 Příspěvků)
+        // ==========================================
+        const postsData = [
+            // --- STAVĚNÍ (5 postů) ---
+            { id: 1, cat: 'build', score: 1450, time: 'před 2 hodinami', author: 'u/CastleBuilder99', title: 'Můj survival hrad po 150 hodinách práce. Vše těženo ručně!', img: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&auto=format&fit=crop', text: 'Stavba je převážně z Deepslatu a Stone Bricků. Most je plně funkční přes Redstone obvod, který stahuje mříže při západu slunce. Tady je link na Gitcraft Blueprint repozitář pro ty, co si to chtějí stáhnout.', comments: [{user: 'u/MiningPro', text: 'Neskutečný respekt za ten survival. Já bych u toho ztratil nervy.'}, {user: 'u/RedstoneNerd', text: 'Můžeš poslat detail toho zapojení mostu? Zasekl jsem se na t-flip flopu.'}] },
+            { id: 2, cat: 'build', score: 892, time: 'před 5 hodinami', author: 'u/UrbanPlanner', title: 'Moderní mrakodrap do našeho serverového města. Návrh vs. Realita.', img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop', text: 'Sklo, bílý beton a moře quartz bloků. Interiér zatím není dodělaný, plánujeme tam udělat serverovou farmu na vesničany.', comments: [{user: 'u/GlassMaker', text: 'Ten odraz na oknech dělá ten shader? Vypadá to brutálně.'}] },
+            { id: 3, cat: 'build', score: 530, time: 'před 8 hodinami', author: 'u/WoodCutter', title: 'Útulná srubová chata v tajze. Ideální startovní základna.', img: 'https://images.unsplash.com/photo-1449198063792-7d754d6f3c80?w=800&auto=format&fit=crop', text: 'Použitý převážně smrk (spruce) a dark oak. Krb uvnitř je bezpečný, zapnul jsem firetick na false, abychom nevyhořeli.', comments: [{user: 'u/SurvivalGuy', text: 'Konečně stavba, kterou zvládnu postavit i já!'}] },
+            { id: 4, cat: 'build', score: 2100, time: 'před 1 dnem', author: 'u/FantasyLore', title: 'Elfí chrám uprostřed džungle, kompletně obrostlý liánami.', img: 'https://images.unsplash.com/photo-1542382156909-9ae37b3f56fd?w=800&auto=format&fit=crop', text: 'Experimentoval jsem s mechovými bloky a glowberries pro atmosféru. V noci to svítí naprosto magicky.', comments: [{user: 'u/MagicWand', text: 'Přesně tohle chybí ve vanilla generaci světa.'}] },
+            { id: 5, cat: 'build', score: 112, time: 'před 2 dny', author: 'u/BridgeMaster', title: 'Design visutého mostu přes kaňon (Blueprint v popisku).', img: 'https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?w=800&auto=format&fit=crop', text: 'Použil jsem táboráky (uhasené) jako dřevěnou podlahu mostu. Drží to na řetězech.', comments: [{user: 'u/Architect', text: 'Ten trik s uhaseným táborákem je starý, ale pořád funguje luxusně.'}] },
+
+            // --- MÓDY & REDSTONE (5 postů) ---
+            { id: 6, cat: 'tech', score: 3240, time: 'před 4 hodinami', author: 'u/EngineerTF', title: 'Create Mod: Plně automatizovaná továrna na chléb. Od zrna po bochník.', img: 'https://images.unsplash.com/photo-1563245452-97b4b1a45bb3?w=800&auto=format&fit=crop', text: 'Mechanické pásy převáží pšenici k mlýnům, pak voda těsto zadělá a pošle do pece. Zpracuje to asi 500 chlebů za hodinu.', comments: [{user: 'u/HungryBoi', text: 'Tohle by nasytilo celý server na měsíc.'}, {user: 'u/CreateDev', text: 'Krásné využití nového updatu pásů!'}] },
+            { id: 7, cat: 'tech', score: 1850, time: 'před 7 hodinami', author: 'u/RedstoneGod', title: 'Postavil jsem 8-bitový počítač v čisté Vanille! (Video inside)', img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop', text: 'Trvalo to 3 měsíce. Umí to sčítat, odčítat a má to vlastní RAM paměť. Frame rate mi při spuštění padá na 5 FPS.', comments: [{user: 'u/CPU_Fan', text: 'Okej, ty jsi blázen. Respekt.'}] },
+            { id: 8, cat: 'tech', score: 920, time: 'před 12 hodinami', author: 'u/TrainEnthusiast', title: 'Nová vlaková síť propojuje všechny biomy. Create Mod + Railcraft.', img: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=800&auto=format&fit=crop', text: 'Udělal jsem dynamické semafory. Pokud je na koleji jiný vlak, zastaví to soupravu. Nula srážek za poslední týden!', comments: [{user: 'u/TicketMaster', text: 'Kdy bude spuštěn prodej jízdenek?'}] },
+            { id: 9, cat: 'tech', score: 450, time: 'před 1 dnem', author: 'u/ServerAdmin', title: 'Jak optimalizovat TPS při velkém množství mob farem? Poraďte.', img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop', text: 'Hráči mi na serveru postavili 4 iron farmy a TPS šlo pod 10. Používám PaperMC, nějaké tipy na úpravu configu?', comments: [{user: 'u/PaperDev', text: 'Omez entity-activation-range v paper.yml.'}] },
+            { id: 10, cat: 'tech', score: 670, time: 'před 2 dny', author: 'u/LogicGate', title: 'Nejmenší 3x3 pístové dveře na světě (verze 1.20+)', img: 'https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=800&auto=format&fit=crop', text: 'Využil jsem nové block-update mechaniky a honey bloky. Je to rychlé a super kompaktní.', comments: [{user: 'u/MumboFan', text: 'Mumbo Jumbo by byl pyšný.'}] },
+
+            // --- TEXTURY & SHADERY (5 postů) ---
+            { id: 11, cat: 'gfx', score: 2800, time: 'před 1 hodinou', author: 'u/PixelArtist', title: 'Můj nový 512x512 PBR Resource Pack. Koukněte na ty odlesky na kameni!', img: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=800&auto=format&fit=crop', text: 'Každý blok má ručně malovanou Normal a Specular mapu. Testováno se SEUS PTGI shadery. Vaše grafika zapláče.', comments: [{user: 'u/RTX_On', text: 'Už cítím, jak mi hoří počítač jen z toho obrázku.'}] },
+            { id: 12, cat: 'gfx', score: 1340, time: 'před 6 hodinami', author: 'u/WaterLover', title: 'Srovnání vodních shaderů: Complementary vs BSL vs Sildurs.', img: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800&auto=format&fit=crop', text: 'Podle mě má Complementary nejlepší plynulost vln, ale BSL má zase hezčí barvu v oceánech. Co myslíte vy?', comments: [{user: 'u/ShaderNerd', text: 'Zkus ještě MakeUp Ultra Fast, je to pecka.'}] },
+            { id: 13, cat: 'gfx', score: 560, time: 'před 10 hodinami', author: 'u/RetroGamer', title: '8-bitový nostalgický pack pro ty, co chtějí hrát na toustovači.', img: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&auto=format&fit=crop', text: 'Všechny textury zmenšeny na 8x8. Nejen že to zvedne FPS o 50%, ale vypadá to jako stará dobrá Zelda.', comments: [{user: 'u/PotatoPC', text: 'Konečně něco pro můj notebook z roku 2012!'}] },
+            { id: 14, cat: 'gfx', score: 1120, time: 'před 1 dnem', author: 'u/SkyboxCreator', title: 'Custom noční obloha (Custom Sky) plná galaxií a polární záře.', img: 'https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?w=800&auto=format&fit=crop', text: 'Vyžaduje to Optifine. Obloha se dynamicky mění podle biomu. V zasněžených biomech uvidíte Auroru.', comments: [{user: 'u/Stargazer', text: 'Nádhera. Noci v MC byly vždycky hrozně nudné.'}] },
+            { id: 15, cat: 'gfx', score: 890, time: 'před 3 dny', author: 'u/UI_Designer', title: 'Předělal jsem celé GUI do temného režimu (Dark Mode GUI).', img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop', text: 'Všechna menu, inventář i crafting tabulka jsou teď tmavé. Už žádné vypálené sítnice ve 2 ráno!', comments: [{user: 'u/NightOwl', text: 'Hrdina, kterého jsme potřebovali, ale nezasloužili si ho.'}] }
+        ];
+
+        // LOGIKA PRO ZOBRAZENÍ FEEDU
+        const container = document.getElementById('reddit-feed-container');
+
+        function renderPosts(filter) {
+            container.innerHTML = '';
+            const filtered = filter === 'all' ? postsData : postsData.filter(p => p.cat === filter);
+            
+            filtered.forEach(post => {
+                const html = `
+                    <div class="reddit-post">
+                        <div class="vote-sidebar">
+                            <i class="fas fa-arrow-up vote-btn up" onclick="handleVote(this, 1)"></i>
+                            <span class="vote-score">${post.score}</span>
+                            <i class="fas fa-arrow-down vote-btn down" onclick="handleVote(this, -1)"></i>
+                        </div>
+                        <div class="post-content" onclick="openModal(${post.id})">
+                            <div class="post-meta">${post.author} • ${post.time}</div>
+                            <h3 class="post-title">${post.title}</h3>
+                            <img src="${post.img}" class="post-img" alt="Post thumbnail">
+                            <div class="post-footer">
+                                <div><i class="fas fa-comment-alt"></i> ${post.comments.length} Komentářů</div>
+                                <div><i class="fas fa-share"></i> Sdílet</div>
+                                <div><i class="fas fa-bookmark"></i> Uložit</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
+
+        function filterPosts(cat) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderPosts(cat);
+        }
+
+        // Hlasování
+        function handleVote(el, val) {
+            event.stopPropagation(); // Zabránění otevření modalu
+            const scoreEl = el.parentElement.querySelector('.vote-score');
+            let current = parseInt(scoreEl.innerText.replace(/\s/g, ''));
+            scoreEl.innerText = current + val;
+            el.style.color = val > 0 ? '#ff4500' : '#7193ff';
+            el.style.pointerEvents = 'none'; // Zamezí vícenásobnému kliknutí
+        }
+
+        // Modální okno
+        function openModal(id) {
+            const post = postsData.find(p => p.id === id);
+            if(!post) return;
+            
+            document.getElementById('modal-img').src = post.img;
+            document.getElementById('modal-meta').innerText = `${post.author} • ${post.time}`;
+            document.getElementById('modal-title').innerText = post.title;
+            document.getElementById('modal-text').innerText = post.text;
+            
+            const commentsContainer = document.getElementById('modal-comments');
+            commentsContainer.innerHTML = post.comments.map(c => `
+                <div class="comment">
+                    <div class="comment-author">${c.user}</div>
+                    <div class="comment-text">${c.text}</div>
+                </div>
+            `).join('');
+
+            document.getElementById('post-modal').style.display = 'flex';
+        }
+
+        function closeModal(e) {
+            if(e.target === document.getElementById('post-modal')) {
+                document.getElementById('post-modal').style.display = 'none';
+            }
+        }
+
+        // Inicializace feedu
+        renderPosts('all');
+
+        // ==========================================
+        // SLIDESHOW LOGIKA
+        // ==========================================
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            if (!slides.length) return;
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slides[slideIndex-1].style.display = "block";  
+        }
+
+        // ==========================================
+        // LIGHT / DARK MODE TOGGLE LOGIKA 
+        // ==========================================
+        const themeToggle = document.getElementById('theme-toggle'); 
+        themeToggle.addEventListener('click', () => { 
+            document.body.classList.toggle('light-theme'); 
+            const icon = themeToggle.querySelector('i'); 
+             
+            icon.style.transform = 'translateY(20px)'; 
+            icon.style.opacity = '0'; 
+             
+            setTimeout(() => { 
+                if (document.body.classList.contains('light-theme')) { 
+                    icon.className = 'fas fa-sun'; 
+                } else { 
+                    icon.className = 'fas fa-moon'; 
+                } 
+                icon.style.transform = 'translateY(-20px)'; 
+                 
+                setTimeout(() => { 
+                    icon.style.transform = 'translateY(0)'; 
+                    icon.style.opacity = '1'; 
+                }, 50); 
+            }, 200); 
+        }); 
+    </script> 
+
+</body> 
 </html>

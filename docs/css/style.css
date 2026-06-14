@@ -1,98 +1,546 @@
 :root {
-    --bg-dark: #0f172a;
+    /* DEFAULT TMAVÝ REŽIM BARVY */
+    --bg-dark: #070a12;
+    --bg-surface: #0f172a;
     --bg-card: #1e293b;
     --accent: #388e3c;
     --accent-light: #deff9a;
     --text-main: #f8fafc;
     --text-dim: #94a3b8;
+    
+    /* Reklamní fixní barvy */
+    --alza-green: #22c55e;
+    --alza-dark: #15803d;
+    --alza-accent: #e11d48;
+    --novinky-red: #cc0000;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* DEFINICE SVĚTLÉHO REŽIMU */
+body.light-theme {
+    --bg-dark: #f1f5f9;
+    --bg-surface: #ffffff;
+    --bg-card: #e2e8f0;
+    --text-main: #0f172a;
+    --text-dim: #64748b;
+    --accent: #2e7d32;
+    --accent-light: #1b5e20;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    scroll-behavior: smooth; 
+}
 
 body {
     background-color: var(--bg-dark);
     color: var(--text-main);
     font-family: 'Urbanist', sans-serif;
     line-height: 1.6;
+    /* Plynulý přechod při přepínání režimů */
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* HEADER */
+/* HEADER & NAVIGATION */
 header {
-    background-color: rgba(15, 23, 42, 0.9);
-    backdrop-filter: blur(10px);
+    background-color: var(--bg-dark);
+    opacity: 0.98;
+    backdrop-filter: blur(12px);
     padding: 20px 0;
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid #334155;
+    border-bottom: 1px solid var(--bg-card);
+    transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 
-header .container {
+.header-flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logo {
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo span { font-size: 26px; font-weight: 900; letter-spacing: 0.5px; }
+
+/* FIX: Zvětšené menu s permanentním rámečkem */
+nav ul { display: flex; list-style: none; gap: 16px; }
+nav a { 
+    text-decoration: none; 
+    color: var(--text-main); 
+    font-size: 16px; 
+    font-weight: 700; 
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--bg-card); 
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+nav a:hover { 
+    background-color: var(--bg-card);
+    color: var(--accent-light); 
+}
+body.light-theme nav a:hover {
+    color: var(--accent);
+}
+
+.header-actions {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 20px;
 }
 
-.logo span {
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-nav ul {
+/* IKONKA MĚSÍČKU / SLUNÍČKA V KROUŽKU */
+.theme-btn {
+    background-color: var(--bg-card);
+    border: 1px solid var(--text-dim);
+    color: var(--text-main);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
     display: flex;
-    list-style: none;
-    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
 }
-
-nav a {
-    text-decoration: none;
-    color: var(--text-dim);
-    font-weight: 500;
-    transition: 0.3s;
+.theme-btn i {
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
-
-nav a:hover { color: var(--accent-light); }
+.theme-btn:hover {
+    transform: scale(1.08);
+    background-color: var(--text-main);
+    color: var(--bg-dark);
+}
 
 .btn-primary {
     background-color: var(--accent);
     color: white;
-    padding: 10px 25px;
+    padding: 12px 24px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
-    transition: 0.3s;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+}
+.btn-primary:hover { background-color: #2e7d32; box-shadow: 0 0 16px rgba(56, 142, 60, 0.4); }
+
+/* MAIN LAYOUT (3 SLOUPCE) */
+.main-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr 300px;
+    gap: 30px;
+    margin-top: 40px;
 }
 
-.btn-primary:hover { background-color: #2e7d32; box-shadow: 0 0 15px var(--accent); }
-
-/* HERO SECTION */
-.hero {
-    padding: 100px 0;
-    text-align: center;
+.sticky-ad-wrapper {
+    position: sticky;
+    top: 110px;
 }
 
-.hero h1 { font-size: 64px; margin-bottom: 20px; }
-.hero h1 span { color: var(--accent-light); }
-.hero p { font-size: 24px; color: var(--text-dim); }
-
-/* FOOTER */
-footer {
-    padding: 40px 0;
-    border-top: 1px solid #334155;
-    margin-top: 100px;
-    text-align: center;
+/* ================= LEVÝ PANEL: NOVINKY STYL REKLAMY ================= */
+.sidebar-left {
+    display: block;
+}
+.novinky-ad-label {
+    font-size: 11px;
     color: var(--text-dim);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.novinky-ad-box {
+    background-color: #ffffff;
+    color: #1e293b;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border-top: 4px solid var(--novinky-red);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+    border-left: 1px solid rgba(0,0,0,0.05);
+    border-right: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.novinky-ad-box h3 {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.novinky-ad-box p {
+    font-size: 14px;
+    color: #475569;
+    margin-bottom: 14px;
+    line-height: 1.4;
+}
+
+.novinky-ad-image-mock {
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    padding: 16px;
+    text-align: center;
+    border-radius: 6px;
+    margin-bottom: 14px;
+    color: #64748b;
+}
+.novinky-ad-image-mock i { font-size: 28px; display: block; margin-bottom: 6px; color: var(--novinky-red); }
+.novinky-ad-image-mock span { font-size: 12px; font-weight: 700; }
+
+.novinky-ad-btn {
+    display: block;
+    text-align: center;
+    background-color: var(--novinky-red);
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+.novinky-ad-btn:hover { background-color: #990000; }
+
+/* ================= STŘEDNÍ PANEL: STREAM OBSAHU ================= */
+.hero-section {
+    background: var(--bg-surface);
+    padding: 32px;
+    border-radius: 12px;
+    border: 1px solid var(--bg-card);
+    margin-bottom: 30px;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+.hero-section h1 { font-size: 42px; margin-bottom: 12px; font-weight: 900; }
+.hero-section h1 span { color: var(--accent); }
+
+body.light-theme .hero-section h1 span { color: var(--accent-light); }
+
+.disclaimer {
+    background-color: rgba(239, 68, 68, 0.08);
+    border-left: 4px solid #ef4444;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #ef4444;
+    margin-bottom: 20px;
+}
+.welcome-text p { font-size: 17px; color: var(--text-dim); }
+
+/* SLIDESHOW */
+.slideshow-section { margin-bottom: 30px; }
+.slideshow-container {
+    position: relative;
+    max-width: 100%;
+    height: 360px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--bg-card);
+}
+.mySlides { display: none; height: 100%; cursor: pointer; }
+.mySlides img { width: 100%; height: 100%; object-fit: cover; }
+
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 12px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: rgba(0,0,0,0.5);
+    user-select: none;
+    transition: 0.2s;
+    z-index: 10;
+}
+.next { right: 0; }
+.prev:hover, .next:hover { background-color: var(--accent); }
+.fade { animation: fadeAnim 0.4s ease-in-out; }
+@keyframes fadeAnim { from {opacity: .7} to {opacity: 1} }
+
+/* ČLÁNKY / INFO KARTY */
+.info-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--bg-card);
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    transition: all 0.4s ease;
+}
+
+/* SEKCE PRO ZDROJE */
+.sources-section { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--bg-card); }
+.sources-card { background-color: var(--bg-surface); padding: 20px; border-radius: 12px; border: 1px solid var(--bg-card); font-size: 15px; transition: all 0.4s ease; }
+.sources-card ul { margin-top: 12px; padding-left: 20px; color: var(--text-dim); }
+.sources-card li { margin-bottom: 6px; }
+.sources-card a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+/* ================= PRAVÝ PANEL: ALZA PREZENTACE STYL ================= */
+.alza-title-container {
+    background-color: #1e293b;
+    padding: 8px;
+    border-radius: 6px 6px 0 0;
+    text-align: center;
+    border-bottom: 2px solid var(--alza-green);
+}
+
+.alza-logo-mock {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #fff;
+}
+.alza-logo-mock span {
+    background-color: var(--alza-accent);
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.alza-main-banner {
+    background: linear-gradient(180deg, #16a34a 0%, #166534 100%);
+    padding: 24px 20px;
+    border-radius: 0 0 12px 12px;
+    text-align: center;
+    box-shadow: 0 10px 25 rgba(34, 197, 94, 0.15);
+    margin-bottom: 20px;
+    border: 1px solid #22c55e;
+}
+
+.alza-green-mascot {
+    font-size: 48px;
+    color: #deff9a;
+    margin-bottom: 10px;
+    animation: bounce 2s infinite alternate;
+}
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-5px); }
+}
+
+.alza-badge-sale {
+    background-color: #fff;
+    color: #000;
+    font-weight: 900;
+    font-size: 12px;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.alza-main-banner h4 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.alza-pitch { font-size: 13px; color: #f0fdf4; margin-bottom: 16px; line-height: 1.4; }
+
+.alza-price-tag { margin-bottom: 20px; }
+.alza-price-tag .old-price { display: block; font-size: 13px; color: #bbf7d0; text-decoration: line-through; }
+.alza-price-tag .new-price { font-size: 26px; font-weight: 900; color: #ffffff; }
+.alza-price-tag .month { font-size: 14px; font-weight: 400; }
+
+.alza-btn-buy {
+    display: block;
+    background-color: #ffffff;
+    color: #166534;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: 0.2s;
+}
+.alza-btn-buy:hover { background-color: #deff9a; transform: scale(1.03); }
+
+.alza-mini-banner {
+    background-color: #1e293b;
+    border: 1px solid #22c55e;
+    padding: 16px;
+    border-radius: 8px;
+    color: #fff;
+}
+.tag-orange { background-color: #ea580c; font-size: 9px; font-weight: 900; padding: 2px 6px; border-radius: 4px; color: #fff; }
+.alza-mini-banner h5 { font-size: 14px; margin: 6px 0 2px 0; color: #fff; }
+.alza-mini-banner p { font-size: 12px; color: #cbd5e1; }
+
+/* FIX: FOOTER REAGUJE NA LIGHT MODE */
+footer {
+    background-color: var(--bg-surface); 
+    padding: 40px 0;
+    margin-top: 60px;
+    border-top: 1px solid var(--bg-card);
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+.footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.footer-info h4 { color: var(--text-main); margin-bottom: 6px; }
+.footer-info p { font-size: 13px; color: var(--text-dim); max-width: 500px; }
+.footer-credits { text-align: right; font-size: 14px; color: var(--text-dim); }
+.footer-credits strong { color: var(--text-main); }
+
+/* ================= NOVÉ: DOPLNĚNÉ STYLY PRO REDDIT FEED ================= */
+.reddit-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+.filter-btn {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--bg-card);
+    color: var(--text-dim);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.filter-btn:hover, .filter-btn.active {
+    background-color: #ff4500;
+    color: white;
+    border-color: #ff4500;
+}
+.reddit-post {
+    display: flex;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--bg-card);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s, background-color 0.4s;
+}
+.reddit-post:hover {
+    border-color: var(--text-dim);
+}
+.vote-sidebar {
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 46px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 14px;
+    gap: 8px;
+}
+body.light-theme .vote-sidebar {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+.vote-btn {
+    cursor: pointer;
+    color: var(--text-dim);
+    font-size: 16px;
+    transition: color 0.2s;
+}
+.vote-btn:hover.up { color: #ff4500; }
+.vote-btn:hover.down { color: #7193ff; }
+.vote-score { font-size: 13px; font-weight: 900; }
+
+.post-content {
+    padding: 16px;
+    flex: 1;
+    cursor: pointer;
+}
+.post-meta { font-size: 12px; color: var(--text-dim); margin-bottom: 6px; }
+.post-title { font-size: 18px; font-weight: 700; margin-bottom: 12px; color: var(--text-main); }
+.post-img {
+    width: 100%;
+    max-height: 380px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+.post-footer { display: flex; gap: 16px; font-size: 13px; color: var(--text-dim); font-weight: 700; }
+.post-footer div { display: flex; align-items: center; gap: 6px; }
+
+/* ================= NOVÉ: DOPLNĚNÉ STYLY PRO MODÁLNÍ OKNO ================= */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(6px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+}
+.modal-box {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--bg-card);
+    width: 100%;
+    max-width: 750px;
+    max-height: 85vh;
+    border-radius: 12px;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+.modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    font-size: 20px;
+    color: white;
+    background-color: rgba(0,0,0,0.6);
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.2s;
+}
+.modal-close:hover { background-color: #ff4500; }
+.modal-header-img { width: 100%; max-height: 320px; object-fit: cover; }
+.modal-body { padding: 24px; }
+.modal-text {
+    margin-top: 14px;
+    font-size: 15px;
+    line-height: 1.6;
+    border-bottom: 1px solid var(--bg-card);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+.comment {
+    background-color: var(--bg-dark);
+    border-left: 3px solid var(--accent);
+    padding: 12px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 12px;
+    transition: background-color 0.4s;
+}
+.comment-author { font-size: 13px; font-weight: 700; color: #ff4500; margin-bottom: 4px; }
+.comment-text { font-size: 14px; color: var(--text-main); }
+
+/* RESPONSIVENESS */
+@media (max-width: 1200px) {
+    .main-layout { grid-template-columns: 1fr; }
+    .sidebar-left, .sidebar-right { display: none; }
 }
